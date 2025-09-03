@@ -94,8 +94,8 @@ app.controller("productosCtrl", function ($scope, $http) {
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true
 
-    var pusher = new Pusher("f1281074f26adab83ff0", {
-      cluster: "mt1"
+    var pusher = new Pusher("e57a8ad0a9dc2e83d9a2", {
+      cluster: "us2"
     })
 
     var channel = pusher.subscribe("canalProductos")

@@ -32,11 +32,11 @@ def pusherProductos():
     import pusher
     
     pusher_client = pusher.Pusher(
-        app_id='2046011',
-        key='f1281074f26adab83ff0',
-        secret='2efc33f1ca05cbd81c7a',
-        cluster='mt1',
-        ssl=True
+      app_id="2046005",
+      key="e57a8ad0a9dc2e83d9a2",
+      secret="8a116dd9600a3b04a3a0",
+      cluster="us2",
+      ssl=True
     )
     
     pusher_client.trigger("canalProductos", "eventoProductos", {"message": "Hola Mundo!"})
