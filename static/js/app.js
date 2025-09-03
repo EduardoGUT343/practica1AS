@@ -57,20 +57,6 @@ app.run(["$rootScope", "$location", "$timeout", function($rootScope, $location, 
 
     $rootScope.$on("$routeChangeSuccess", function (event, current, previous) {
         $("html").css("overflow-x", "hidden")
-
-        document.addEventListener("DOMContentLoaded", function () {
-            // Enable pusher logging - don't include this in production
-            Pusher.logToConsole = true;
-
-            var pusher = new Pusher('f1281074f26adab83ff0', {
-            cluster: 'mt1'
-            });
-
-            var channel = pusher.subscribe('my-channel');
-            channel.bind('my-event', function(data) {
-            alert(JSON.stringify(data));
-            });
-        })
         
         const path = current.$$route.originalPath
 
@@ -105,6 +91,18 @@ app.controller("productosCtrl", function ($scope, $http) {
 
     buscarProductos()
     
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true
+
+    var pusher = new Pusher("f1281074f26adab83ff0", {
+      cluster: "mt1"
+    })
+
+    var channel = pusher.subscribe("canalProductos")
+    channel.bind("eventoProductos", function(data) {
+        alert(JSON.stringify(data))
+    })
+
     $(document).on("submit", "#frmProducto", function (event) {
         event.preventDefault()
 
@@ -156,6 +154,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     activeMenuOption(location.hash)
 })
+
+
+
 
 
 
